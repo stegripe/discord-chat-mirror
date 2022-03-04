@@ -23,7 +23,9 @@
 Discord Chat Mirror, as the name stated, this is a tool to mirror a discord chat on specific channel to another one you wish. It uses WebSocket and Discord WebHook. 
 
 What inspire me is, when I was bored I saw a video on YouTube about the same as this project, but the one I saw could not send files, so i decided to make one for myself, and instead of relying on one modules (selfcore), I use two (selfcore and discord.js)
+
 &#xa0;
+
 >**Note:** If you use your main account instead of a bot, your account could get disabled for it, because it is categorized as selfbot and I take no responsibility if anything happend to you or your account.
 
 ## Features ##
