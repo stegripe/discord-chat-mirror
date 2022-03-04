@@ -1,0 +1,19 @@
+{
+  "name": "discord-chat-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "selfcore": "^1.1.1",
+    "ws": "^8.5.0"
+  }
+}
