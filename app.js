@@ -20,7 +20,7 @@ gateway.on('message', (m) => {
 	if (m.author.bot) bot = ' [BOT]';
 
 	let things = {
-		content: m.content ? m.content : '[!] There was no other message [!]',
+		content: m.content ? m.content : '** **',
 		username: `${m.author.username}#${m.author.discriminator}${bot}`,
 		avatarURL: `https://cdn.discordapp.com/avatars/${m.author.id}/${m.author.avatar}.png`
 	};
