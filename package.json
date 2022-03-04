@@ -1,7 +1,7 @@
 {
-  "name": "discord-chat-tracker",
+  "name": "discord-chat-mirror",
   "version": "1.0.0",
-  "description": "",
+  "description": "Track/Mirror/Log Discord Channel Messages",
   "main": "app.js",
   "type": "module",
   "scripts": {
