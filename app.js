@@ -17,12 +17,14 @@ gateway.on('message', (m) => {
 	if (m.channel_id !== process.env.CHANNEL_ID) return;
 
 	let bot = ' [USER]';
+	let ext = 'jpg'
+	if (m.author.avatar.startsWith("a_")) ext = 'gif';
 	if (m.author.bot) bot = ' [BOT]';
 
 	let things = {
 		content: m.content ? m.content : '** **',
 		username: `${m.author.username}#${m.author.discriminator}${bot}`,
-		avatarURL: `https://cdn.discordapp.com/avatars/${m.author.id}/${m.author.avatar}.png`
+		avatarURL: `https://cdn.discordapp.com/avatars/${m.author.id}/${m.author.avatar}.${ext}`
 	};
 
 	if (m.embeds[0]) {
