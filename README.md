@@ -53,11 +53,11 @@ Clone this project;
 git clone https://github.com/Tiramitzu/discord-chat-mirror.git
 ```
 Access the project you just clone in the folder and choose one of the two version;
-Without selfbot
+Without selfbot;
 ```bash
 cd discord-chat-mirror/bot-ver
 ```
-With selfbot
+With selfbot;
 ```bash
 cd discord-chat-mirror/selfbot-ver
 ```
