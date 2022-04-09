@@ -30,12 +30,14 @@ What inspire me is, when I was bored I saw a video on YouTube about the same as 
 
 ## Features ##
 
++ Support .gif profile;
 + Mirror normal message;
 + Mirror files;
 + Mirror embeds;
 
 ## Technologies ##
 
+- [Node.JS](https://nodejs.org/en/)
 - [JavaScript](https://www.javascript.com/)
 - [Discord.JS](https://github.com/discordjs/discord.js)
 - [Selfcore](https://github.com/ExordiumX/selfcore)
@@ -50,9 +52,14 @@ Clone this project;
 ```bash
 git clone https://github.com/Tiramitzu/discord-chat-mirror.git
 ```
-Access the project you just clone in the folder;
+Access the project you just clone in the folder and choose one of the two version;
+Without selfbot
 ```bash
-cd discord-chat-mirror
+cd discord-chat-mirror/bot-ver
+```
+With selfbot
+```bash
+cd discord-chat-mirror/selfbot-ver
 ```
 Rename `.env.example` to `.env`, and edit its contents;
 

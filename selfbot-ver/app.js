@@ -17,8 +17,8 @@ gateway.on('message', (m) => {
 	if (m.channel_id !== process.env.CHANNEL_ID) return;
 
 	let bot = ' [USER]';
-	let ext = 'jpg'
-	if (m.author.avatar.startsWith("a_")) ext = 'gif';
+	let ext = 'jpg';
+	if (m.author.avatar.startsWith('a_')) ext = 'gif';
 	if (m.author.bot) bot = ' [BOT]';
 
 	let things = {
@@ -32,9 +32,9 @@ gateway.on('message', (m) => {
 
 		wsClient.send(things);
 	} else if (m.attachments[0]) {
-		things.files = m.attachments.map(a => a.url);
+		things.files = m.attachments.map((a) => a.url);
 
-        wsClient.send(things);
+		wsClient.send(things);
 	} else {
 		wsClient.send(things);
 	}
