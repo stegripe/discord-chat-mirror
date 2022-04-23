@@ -71,7 +71,7 @@ And then run the project using `node .` or `npm start` or `node app.js`.
 
 ## License ##
 
-This project is under the license of MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under the license of MIT. For more details, see the [LICENSE](LICENSE) file.
 
 
 Made with :heart: by <a href="https://github.com/tiramitzu" target="_blank">Tiramitzu</a>
