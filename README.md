@@ -26,7 +26,7 @@ What inspire me is, when I was bored I saw a video on YouTube about the same as 
 
 &#xa0;
 
->**Note:** If you use your main account instead of a bot, your account could get disabled for it, because it is categorized as selfbot and I take no responsibility if anything happend to you or your account.
+>**Note:** If you use your main account instead of a bot, your account could get disabled for it, because it is categorized as selfbot and I take no responsibility if anything happend to you or your account. Also, there is a rate limit to discord api, so it is not recommended for a large guild/server/channel (Just restart it).
 
 ## Features ##
 
