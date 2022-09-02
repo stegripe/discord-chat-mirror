@@ -78,7 +78,6 @@ or if you are using yarn
 yarn build && yarn start
 ```
 ## License ##
-
 This project is under the license of BSD 3-Clause. For more details, see the [LICENSE](LICENSE) file.
 
 
