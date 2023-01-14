@@ -31,7 +31,7 @@
         "ignorePatterns": "dist/*"
     },
     "devDependencies": {
-        "@clytage-pkg/eslint-config": "1.4.0",
+        "@clytage-pkg/eslint-config": "1.6.0",
         "@types/jsonfile": "6.1.1",
         "@types/node": "18.11.18",
         "@types/node-fetch": "2.6.2",
