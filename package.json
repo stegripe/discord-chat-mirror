@@ -1,6 +1,6 @@
 {
     "name": "discord-chat-mirror",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Script that relays all messages from the target discord server's channel to another one using webhook. The free & open-source edition.",
     "main": "dist/index.js",
     "types": "module",

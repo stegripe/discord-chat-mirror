@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-template-expressions */ // eslint-disable-line max-len
-import { WebhookClient, Client } from "discord.js";
+import { WebhookClient, Client, GatewayIntentBits } from "discord.js";
 import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env";
 import { Channel, Things } from "../interfaces";
 import fetch from "node-fetch";
@@ -27,7 +27,13 @@ export const createChannel = async (
 
 export const listen = (): void => {
     new Client({
-        intents: ["Guilds", "GuildMembers", "GuildMessages"],
+        intents: [
+            GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMembers,
+            GatewayIntentBits.GuildMessages,
+            GatewayIntentBits.DirectMessages,
+            GatewayIntentBits.MessageContent
+        ],
         closeTimeout: 6000
     });
 
