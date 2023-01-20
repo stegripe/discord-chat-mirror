@@ -3,13 +3,13 @@
     "version": "1.0.1",
     "description": "Script that relays all messages from the target discord server's channel to another one using webhook. The free & open-source edition.",
     "main": "dist/index.js",
-    "types": "module",
+    "type": "module",
     "scripts": {
         "build": "npm run lint && npm run compile",
         "compile": "tsc --build tsconfig.json",
         "lint": "eslint . --ignore-path .gitignore --ext .ts",
         "lint:fix": "npm run lint -- --fix",
-        "start": "node .",
+        "start": "node --es-module-specifier-resolution=node .",
         "start:dev": "rimraf ./dist && npm run compile && npm start"
     },
     "repository": {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-template-expressions */ // eslint-disable-line max-len
 import { WebhookClient, Client, GatewayIntentBits } from "discord.js";
 import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env";
-import { Channel, Things } from "../interfaces";
+import { Channel, Things } from "../typings";
 import fetch from "node-fetch";
 import Websocket from "ws";
 
