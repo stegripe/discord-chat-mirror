@@ -39,7 +39,7 @@
         "@typescript-eslint/parser": "5.60.1",
         "eslint": "8.43.0",
         "rimraf": "5.0.1",
-        "typescript": "5.1.5"
+        "typescript": "5.1.6"
     },
     "dependencies": {
         "discord.js": "^14.11.0",
