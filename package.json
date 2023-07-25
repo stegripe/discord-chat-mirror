@@ -33,7 +33,7 @@
     "devDependencies": {
         "@clytage-pkg/eslint-config": "2.0.0",
         "@types/jsonfile": "6.1.1",
-        "@types/node": "18.17.0",
+        "@types/node": "18.17.1",
         "@types/node-fetch": "2.6.4",
         "@typescript-eslint/eslint-plugin": "5.62.0",
         "@typescript-eslint/parser": "5.62.0",
@@ -45,6 +45,6 @@
         "discord.js": "^14.11.0",
         "dotenv": "^16.3.1",
         "jsonfile": "^6.1.0",
-        "node-fetch": "^3.3.1"
+        "node-fetch": "^3.3.2"
     }
 }
