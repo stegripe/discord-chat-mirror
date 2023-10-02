@@ -71,7 +71,7 @@ yarn
 
 Run the project;
 ```bash
-npm build && npm start
+npm run build && npm run start
 ```
 or if you are using yarn
 ```bash
