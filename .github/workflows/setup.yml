@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@bea5baf987ba7aa777a8a0b4ace377a21c45c381 # v3.8.0
+      uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
       with:
         node-version: ${{ matrix.node-version }}
         check-latest: true
@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@bea5baf987ba7aa777a8a0b4ace377a21c45c381 # v3.8.0
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
