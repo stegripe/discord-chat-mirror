@@ -14,14 +14,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Clytage/discord-chat-mirror-ext.git"
+        "url": "git+https://github.com/Stegripe/discord-chat-mirror-ext.git"
     },
-    "author": "Clytage <support@clytage.org>",
+    "author": "Stegripe <support@stegripe.org>",
     "license": "BSD-3-Clause",
     "bugs": {
-        "url": "https://github.com/Clytage/discord-chat-mirror-ext/issues"
+        "url": "https://github.com/Stegripe/discord-chat-mirror-ext/issues"
     },
-    "homepage": "https://github.com/Clytage/discord-chat-mirror-ext#readme",
+    "homepage": "https://github.com/Stegripe/discord-chat-mirror-ext#readme",
     "engines": {
         "node": ">=20.6.0",
         "pnpm": ">=8.0.0"
