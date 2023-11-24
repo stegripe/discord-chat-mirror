@@ -9,7 +9,7 @@
         "compile": "tsc --build tsconfig.json",
         "lint": "eslint . --ignore-path .gitignore --ext .ts",
         "lint:fix": "npm run lint -- --fix",
-        "start": "node --es-module-specifier-resolution=node .",
+        "start": "node --env-file .env --es-module-specifier-resolution=node .",
         "start:dev": "rimraf ./dist && npm run compile && npm start"
     },
     "repository": {
@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/Clytage/discord-chat-mirror-ext#readme",
     "engines": {
-        "node": ">=16.17.0",
+        "node": ">=20.6.0",
         "pnpm": ">=8.0.0"
     },
     "eslintConfig": {
@@ -35,6 +35,7 @@
         "@types/jsonfile": "6.1.4",
         "@types/node": "20.9.0",
         "@types/node-fetch": "2.6.9",
+        "@types/ws": "^8.5.10",
         "@typescript-eslint/eslint-plugin": "6.10.0",
         "@typescript-eslint/parser": "6.10.0",
         "eslint": "8.53.0",
@@ -45,5 +46,6 @@
         "discord.js": "^14.14.1",
         "jsonfile": "^6.1.0",
         "node-fetch": "^3.3.2",
+        "ws": "^8.14.2"
     }
 }
