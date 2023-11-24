@@ -24,7 +24,7 @@
     "homepage": "https://github.com/Clytage/discord-chat-mirror-ext#readme",
     "engines": {
         "node": ">=16.17.0",
-        "npm": ">=8.18.0"
+        "pnpm": ">=8.0.0"
     },
     "eslintConfig": {
         "extends": "@clytage-pkg/eslint-config/typescript",
