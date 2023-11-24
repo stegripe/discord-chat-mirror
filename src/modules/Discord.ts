@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-template-expressions */ // eslint-disable-line max-len
-import { WebhookClient, Client, GatewayIntentBits } from "discord.js";
-import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env";
-import { Channel, Things } from "../typings";
+import { WebhookClient, Client, GatewayIntentBits, GatewayReceivePayload, GatewayDispatchEvents } from "discord.js";
+import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env.js";
+import { Channel, Things, WebsocketTypes } from "../typings";
 import fetch from "node-fetch";
 import Websocket from "ws";
+import { RawAttachmentData, RawStickerData } from "discord.js/typings/rawDataTypes.js";
 
 export const executeWebhook = (things: Things): void => {
     const wsClient = new WebhookClient({ url: things.url });
@@ -18,6 +18,7 @@ export const createChannel = async (
 ): Promise<Channel> => fetch(`https://discord.com/api/v10/guilds/${newId}/channels`, {
     body: JSON.stringify({
         name,
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         parent_id: parentId,
         position: pos
     }),
@@ -37,16 +38,15 @@ export const listen = (): void => {
         closeTimeout: 6000
     });
 
-    const ws: Websocket = new Websocket(
-        "wss://gateway.discord.gg/?v=10&encoding=json"
-    );
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    const ws: WebsocketTypes = new Websocket("wss://gateway.discord.gg/?v=10&encoding=json");
     let authenticated = false;
 
     ws.on("open", () => {
         console.log("Connected to the Discord API.");
     });
-    ws.on("message", (data: Websocket.Data) => {
-        const payload = JSON.parse(data.toLocaleString());
+    ws.on("message", (data: [any]) => {
+        const payload: GatewayReceivePayload = JSON.parse(data.toString());
         const { op, d, s, t } = payload;
 
         switch (op) {
@@ -90,7 +90,7 @@ export const listen = (): void => {
                 break;
             case 0:
                 if (
-                    t === "MESSAGE_CREATE" &&
+                    t === GatewayDispatchEvents.MessageCreate &&
                     d.guild_id === serverId &&
                     d.channel_id === channelId
                 ) {
@@ -129,20 +129,15 @@ export const listen = (): void => {
                         things.embeds = embeds;
                     } else if (sticker_items) {
                         things.files = sticker_items.map(
-                            (a: any) => `https://media.discordapp.net/stickers/${a.id}.webp`
+                            (a: RawStickerData) => `https://media.discordapp.net/stickers/${a.id}.webp`
                         );
                     } else if (attachments[0]) {
-                        const fileSizeInBytes = Math.max(
-                            ...attachments.map((a: any) => a.size)
-                        );
-                        const fileSizeInMegabytes =
-                            fileSizeInBytes / (1024 * 1024);
+                        const fileSizeInBytes = Math.max(...attachments.map((a: RawAttachmentData) => a.size));
+                        const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
                         if (fileSizeInMegabytes < 8) {
-                            things.files = attachments.map((a: any) => a.url);
+                            things.files = attachments.map((a: RawAttachmentData) => a.url);
                         } else {
-                            things.content += attachments
-                                .map((a: any) => a.url)
-                                .join("\n");
+                            things.content += attachments.map((a: RawAttachmentData) => a.url).join("\n");
                         }
                     }
                     executeWebhook(things);

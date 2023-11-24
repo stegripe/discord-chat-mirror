@@ -34,3 +34,8 @@ export interface Things {
 export interface WebhookConfig {
     things: Things;
 }
+
+export interface WebsocketTypes {
+    on: (event: string, cb: (data: any) => void) => void;
+    send: (data: any) => void;
+}

@@ -1,3 +1,3 @@
-import { listen } from "./modules/Discord";
+import { listen } from "./modules/Discord.js";
 
 listen();
