@@ -27,11 +27,11 @@
         "pnpm": ">=8.0.0"
     },
     "eslintConfig": {
-        "extends": "@clytage-pkg/eslint-config/typescript",
+        "extends": "@clytage/eslint-config/typescript",
         "ignorePatterns": "dist/*"
     },
     "devDependencies": {
-        "@clytage-pkg/eslint-config": "2.0.0",
+        "@clytage/eslint-config": "3.0.1",
         "@types/jsonfile": "6.1.4",
         "@types/node": "20.9.0",
         "@types/node-fetch": "2.6.9",
@@ -42,9 +42,8 @@
         "typescript": "5.2.2"
     },
     "dependencies": {
-        "discord.js": "^14.13.0",
-        "dotenv": "^16.3.1",
+        "discord.js": "^14.14.1",
         "jsonfile": "^6.1.0",
-        "node-fetch": "^3.3.2"
+        "node-fetch": "^3.3.2",
     }
 }
