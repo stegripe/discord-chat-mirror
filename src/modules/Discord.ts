@@ -104,7 +104,14 @@ export const listen = (): void => {
                         sticker_items,
                         author
                     } = d;
-                    const { avatar, username, id, discriminator } = author;
+                    const { avatar, username, discriminator: discriminatorRaw, id } = author;
+                    let discriminator: string | null = discriminatorRaw;
+
+                    if (discriminator === "0") {
+                        discriminator = null;
+                    } else {
+                        discriminator = `#${discriminator}`;
+                    }
 
                     if (avatar?.startsWith("a_")) ext = "gif";
                     if (author.bot) ub = " [BOT]";
@@ -112,12 +119,10 @@ export const listen = (): void => {
                     const things: Things = {
                         avatarURL: avatar
                             ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.${ext}`
-                            : `https://cdn.discordapp.com/embed/avatars/${
-                                discriminator % 5
-                            }.png`,
+                            : `https://cdn.discordapp.com/embed/avatars/${(BigInt(id) >> 22n) % 6n}.png`,
                         content: content ? content : "** **\n",
                         url: webhookUrl,
-                        username: `${username}#${discriminator}${ub}`
+                        username: `${username}${discriminator ?? ""}${ub}`
                     };
 
                     if (embeds[0]) {
