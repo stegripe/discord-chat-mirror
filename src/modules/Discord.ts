@@ -1,4 +1,4 @@
-import { WebhookClient, Client, GatewayIntentBits, GatewayReceivePayload, GatewayDispatchEvents } from "discord.js";
+import { WebhookClient, Client, GatewayIntentBits, GatewayReceivePayload, GatewayDispatchEvents, GatewayOpcodes } from "discord.js";
 import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env.js";
 import { Channel, Things, WebsocketTypes } from "../typings/index.js";
 import fetch from "node-fetch";
@@ -50,7 +50,7 @@ export const listen = (): void => {
         const { op, d, s, t } = payload;
 
         switch (op) {
-            case 10:
+            case GatewayOpcodes.Hello:
                 try {
                     ws.send(
                         JSON.stringify({
@@ -70,7 +70,7 @@ export const listen = (): void => {
                     console.log(e);
                 }
                 break;
-            case 11:
+            case GatewayOpcodes.HeartbeatAck:
                 if (!authenticated) {
                     authenticated = true;
                     ws.send(
@@ -88,7 +88,7 @@ export const listen = (): void => {
                     );
                 }
                 break;
-            case 0:
+            case GatewayOpcodes.Dispatch:
                 if (
                     t === GatewayDispatchEvents.MessageCreate &&
                     d.guild_id === serverId &&
