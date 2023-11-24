@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES2021",
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "lib": ["ES2021"],
+        "target": "ESNext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "lib": [
+            "ESNext"
+        ],
         "strict": true,
         "outDir": "dist",
         "esModuleInterop": true,
@@ -14,8 +16,13 @@
         "noEmitHelpers": true,
         "importHelpers": true,
         "resolveJsonModule": true,
-        "typeRoots": ["node_modules/@types", "src/typings"]
+        "typeRoots": [
+            "node_modules/@types",
+            "src/typings"
+        ]
     },
     "exclude": [],
-    "include": ["src/**/*"]
+    "include": [
+        "src/**/*"
+    ]
 }

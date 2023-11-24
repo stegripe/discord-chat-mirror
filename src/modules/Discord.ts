@@ -1,6 +1,6 @@
 import { WebhookClient, Client, GatewayIntentBits, GatewayReceivePayload, GatewayDispatchEvents } from "discord.js";
 import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env.js";
-import { Channel, Things, WebsocketTypes } from "../typings";
+import { Channel, Things, WebsocketTypes } from "../typings/index.js";
 import fetch from "node-fetch";
 import Websocket from "ws";
 import { RawAttachmentData, RawStickerData } from "discord.js/typings/rawDataTypes.js";
