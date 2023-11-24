@@ -25,8 +25,8 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. Windows 10, Ubuntu]
- - NPM Version: [e.g. 8.8.8]
- - NodeJS Version [e.g. 16.1.1]
+ - PNPM Version: [e.g. 8.8.8]
+ - NodeJS Version [e.g. 20.6.5]
 
 **Additional context**
 Add any other context about the problem here.
