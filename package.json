@@ -33,8 +33,8 @@
     "devDependencies": {
         "@clytage/eslint-config": "3.0.1",
         "@types/jsonfile": "6.1.4",
-        "@types/node": "20.11.4",
-        "@types/node-fetch": "2.6.10",
+        "@types/node": "20.11.5",
+        "@types/node-fetch": "2.6.11",
         "@types/ws": "^8.5.10",
         "@typescript-eslint/eslint-plugin": "6.19.0",
         "@typescript-eslint/parser": "6.19.0",
