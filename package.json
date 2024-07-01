@@ -33,19 +33,19 @@
     "devDependencies": {
         "@clytage/eslint-config": "3.0.1",
         "@types/jsonfile": "6.1.4",
-        "@types/node": "20.12.7",
+        "@types/node": "20.14.9",
         "@types/node-fetch": "2.6.11",
         "@types/ws": "^8.5.10",
         "@typescript-eslint/eslint-plugin": "7.15.0",
         "@typescript-eslint/parser": "7.15.0",
         "eslint": "8.57.0",
-        "rimraf": "5.0.5",
+        "rimraf": "5.0.7",
         "typescript": "5.5.3"
     },
     "dependencies": {
-        "discord.js": "^14.14.1",
+        "discord.js": "^14.15.3",
         "jsonfile": "^6.1.0",
         "node-fetch": "^3.3.2",
-        "ws": "^8.16.0"
+        "ws": "^8.17.1"
     }
 }
