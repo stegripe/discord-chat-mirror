@@ -39,7 +39,7 @@
         "@typescript-eslint/eslint-plugin": "7.16.0",
         "@typescript-eslint/parser": "7.16.0",
         "eslint": "8.57.0",
-        "rimraf": "5.0.5",
+        "rimraf": "6.0.0",
         "typescript": "5.5.3"
     },
     "dependencies": {
