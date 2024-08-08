@@ -1,7 +1,13 @@
-import { WebhookClient, Client, GatewayIntentBits, GatewayReceivePayload, GatewayDispatchEvents, GatewayOpcodes } from "discord.js";
-import { channelId, discordToken, headers, serverId, webhookUrl } from "../util/env.js";
-import { Channel, Things, WebsocketTypes } from "../typings/index.js";
-import fetch from "node-fetch";
+import {
+    WebhookClient,
+    Client,
+    GatewayIntentBits,
+    GatewayReceivePayload,
+    GatewayDispatchEvents,
+    GatewayOpcodes
+} from "discord.js";
+import { channelsId, discordToken, webhooksUrl, enableBotIndicator, headers, useWebhookProfile } from "../utils/env.js";
+import { DiscordWebhook, Things, WebsocketTypes } from "../typings/index.js";
 import Websocket from "ws";
 import { RawAttachmentData, RawStickerData } from "discord.js/typings/rawDataTypes.js";
 
@@ -9,22 +15,6 @@ export const executeWebhook = (things: Things): void => {
     const wsClient = new WebhookClient({ url: things.url });
     wsClient.send(things).catch((e: any) => console.error(e));
 };
-
-export const createChannel = async (
-    name: string,
-    newId: string,
-    pos: number,
-    parentId?: string
-): Promise<Channel> => fetch(`https://discord.com/api/v10/guilds/${newId}/channels`, {
-    body: JSON.stringify({
-        name,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        parent_id: parentId,
-        position: pos
-    }),
-    headers,
-    method: "POST"
-}).then(res => res.json()) as Promise<Channel>;
 
 export const listen = (): void => {
     new Client({
@@ -93,13 +83,7 @@ export const listen = (): void => {
                     let ext = "jpg";
                     let ub = " [USER]";
 
-                    const {
-                        content,
-                        attachments,
-                        embeds,
-                        sticker_items,
-                        author
-                    } = d;
+                    const { content, attachments, embeds, sticker_items, author } = d;
                     const { avatar, username, discriminator: discriminatorRaw, id } = author;
                     let discriminator: string | null = discriminatorRaw;
 
