@@ -39,3 +39,14 @@ export interface WebsocketTypes {
     on: (event: string, cb: (data: any) => void) => void;
     send: (data: any) => void;
 }
+
+export interface DiscordWebhook {
+    application_id: Snowflake | null;
+    avatar: string | null;
+    channel_id: Snowflake;
+    guild_id: Snowflake;
+    id: Snowflake;
+    name: string;
+    token: string;
+    url: string;
+}

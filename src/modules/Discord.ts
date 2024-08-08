@@ -45,7 +45,7 @@ export const listen = (): void => {
     ws.on("open", () => {
         console.log("Connected to the Discord API.");
     });
-    ws.on("message", (data: [any]) => {
+    ws.on("message", async (data: [any]) => {
         const payload: GatewayReceivePayload = JSON.parse(data.toString());
         const { op, d, s, t } = payload;
 
@@ -122,6 +122,18 @@ export const listen = (): void => {
                             username: `${username}${discriminator ?? ""}${enableBotIndicator ? ub : ""}`
                         };
 
+                        if (useWebhookProfile) {
+                            const webhookData = await fetch(webhookUrl, {
+                                method: "GET",
+                                headers
+                            });
+
+                            const tes: DiscordWebhook = (await webhookData.json()) as DiscordWebhook;
+                            let ext2 = "jpg";
+                            if (tes.avatar?.startsWith("a_")) ext2 = "gif";
+                            things.avatarURL = `https://cdn.discordapp.com/avatars/${tes.id}/${tes.avatar}.${ext2}`;
+                            things.username = tes.name;
+                        }
 
                         if (embeds[0]) {
                             things.embeds = embeds;
