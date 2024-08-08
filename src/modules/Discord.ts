@@ -89,11 +89,7 @@ export const listen = (): void => {
                 }
                 break;
             case GatewayOpcodes.Dispatch:
-                if (
-                    t === GatewayDispatchEvents.MessageCreate &&
-                    d.guild_id === serverId &&
-                    d.channel_id === channelId
-                ) {
+                if (t === GatewayDispatchEvents.MessageCreate && channelsId.includes(d.channel_id)) {
                     let ext = "jpg";
                     let ub = " [USER]";
 
