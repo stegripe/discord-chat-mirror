@@ -1,19 +1,21 @@
-import {
-    WebhookClient,
-    Client,
-    GatewayIntentBits,
-    GatewayReceivePayload,
-    GatewayDispatchEvents,
-    GatewayOpcodes
-} from "discord.js";
-import { channelsId, discordToken, webhooksUrl, enableBotIndicator, headers, useWebhookProfile } from "../utils/env.js";
-import { DiscordWebhook, Things, WebsocketTypes } from "../typings/index.js";
-import Websocket from "ws";
-import { RawAttachmentData, RawStickerData } from "discord.js/typings/rawDataTypes.js";
+/* eslint-disable no-await-in-loop */
+/* eslint-disable typescript/strict-boolean-expressions */
+/* eslint-disable id-length */
+import { setInterval } from "node:timers";
 
-export const executeWebhook = (things: Things): void => {
+import type { GatewayReceivePayload } from "discord.js";
+import { WebhookClient, Client, GatewayIntentBits, GatewayDispatchEvents, GatewayOpcodes } from "discord.js";
+
+import type { RawAttachmentData, RawStickerData } from "discord.js/typings/rawDataTypes.js";
+import Websocket from "ws";
+
+import type { DiscordWebhook, Things, WebsocketTypes } from "../typings/index.js";
+import { channelsId, discordToken, webhooksUrl, enableBotIndicator, headers, useWebhookProfile } from "../utils/env.js";
+
+
+export const executeWebhook = async (things: Things): Promise<void> => {
     const wsClient = new WebhookClient({ url: things.url });
-    wsClient.send(things).catch((e: any) => console.error(e));
+    await wsClient.send(things)
 };
 
 export const listen = (): void => {
@@ -25,10 +27,9 @@ export const listen = (): void => {
             GatewayIntentBits.DirectMessages,
             GatewayIntentBits.MessageContent
         ],
-        closeTimeout: 6000
+        closeTimeout: 6_000
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const ws: WebsocketTypes = new Websocket("wss://gateway.discord.gg/?v=10&encoding=json");
     let authenticated = false;
 
@@ -36,7 +37,7 @@ export const listen = (): void => {
         console.log("Connected to the Discord API.");
     });
     ws.on("message", async (data: [any]) => {
-        const payload: GatewayReceivePayload = JSON.parse(data.toString());
+        const payload: GatewayReceivePayload = JSON.parse(data.toString()) as GatewayReceivePayload;
         const { op, d, s, t } = payload;
 
         switch (op) {
@@ -56,8 +57,8 @@ export const listen = (): void => {
                             })
                         );
                     }, d.heartbeat_interval);
-                } catch (e) {
-                    console.log(e);
+                } catch (error) {
+                    console.log(error);
                 }
                 break;
             case GatewayOpcodes.HeartbeatAck:
@@ -84,24 +85,20 @@ export const listen = (): void => {
                     let ub = " [USER]";
 
                     const { content, attachments, embeds, sticker_items, author } = d;
-                    const { avatar, username, discriminator: discriminatorRaw, id } = author;
+                    const { avatar, username, discriminator: discriminatorRaw, id, bot } = author;
                     let discriminator: string | null = discriminatorRaw;
 
-                    if (discriminator === "0") {
-                        discriminator = null;
-                    } else {
-                        discriminator = `#${discriminator}`;
-                    }
+                    discriminator = discriminator === "0" ? null : `#${discriminator}`;
 
-                    if (avatar?.startsWith("a_")) ext = "gif";
-                    if (author.bot) ub = " [BOT]";
+                    if ((avatar?.startsWith("a_")) ?? false) ext = "gif";
+                    if (bot ?? false) ub = " [BOT]";
 
                     for (const webhookUrl of webhooksUrl) {
                         const things: Things = {
-                            avatarURL: avatar
+                            avatarURL: (avatar ?? "")
                                 ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.${ext}`
                                 : `https://cdn.discordapp.com/embed/avatars/${(BigInt(id) >> 22n) % 6n}.png`,
-                            content: content ? content : "** **\n",
+                            content: content ?? "** **\n",
                             url: webhookUrl,
                             username: `${username}${discriminator ?? ""}${enableBotIndicator ? ub : ""}`
                         };
@@ -114,7 +111,7 @@ export const listen = (): void => {
 
                             const tes: DiscordWebhook = (await webhookData.json()) as DiscordWebhook;
                             let ext2 = "jpg";
-                            if (tes.avatar?.startsWith("a_")) ext2 = "gif";
+                            if ((tes.avatar?.startsWith("a_")) ?? false) ext2 = "gif";
                             things.avatarURL = `https://cdn.discordapp.com/avatars/${tes.id}/${tes.avatar}.${ext2}`;
                             things.username = tes.name;
                         }
@@ -127,14 +124,14 @@ export const listen = (): void => {
                             );
                         } else if (attachments[0]) {
                             const fileSizeInBytes = Math.max(...attachments.map((a: RawAttachmentData) => a.size));
-                            const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+                            const fileSizeInMegabytes = fileSizeInBytes / (1_024 * 1_024);
                             if (fileSizeInMegabytes < 8) {
                                 things.files = attachments.map((a: RawAttachmentData) => a.url);
                             } else {
                                 things.content += attachments.map((a: RawAttachmentData) => a.url).join("\n");
                             }
                         }
-                        executeWebhook(things);
+                        await executeWebhook(things);
                     }
                 }
                 break;

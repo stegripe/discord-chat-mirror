@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import { parseEnvValue } from "./functions/parseEnvValue.js";
 
 export const discordToken = process.env.DISCORD_TOKEN;

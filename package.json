@@ -7,8 +7,8 @@
     "scripts": {
         "build": "npm run lint && npm run compile",
         "compile": "tsc --build tsconfig.json",
-        "lint": "eslint . --ignore-path .gitignore --ext .ts",
-        "lint:fix": "npm run lint -- --fix",
+        "lint": "eslint . --cache --cache-file .eslintcache",
+        "lint:fix": "eslint . --cache --cache-file .eslintcache --fix",
         "start": "node --env-file .env --es-module-specifier-resolution=node .",
         "start:dev": "rimraf ./dist && npm run compile && npm start"
     },
@@ -26,23 +26,20 @@
         "node": ">=20.6.0",
         "pnpm": ">=8.0.0"
     },
-    "eslintConfig": {
-        "extends": "@clytage/eslint-config/typescript",
-        "ignorePatterns": "dist/*"
-    },
     "devDependencies": {
-        "@clytage/eslint-config": "3.0.1",
+        "@stegripe/eslint-config": "1.0.1",
         "@types/jsonfile": "6.1.4",
         "@types/node": "20.12.7",
         "@types/node-fetch": "2.6.11",
         "@types/ws": "^8.5.10",
         "@typescript-eslint/eslint-plugin": "7.18.0",
         "@typescript-eslint/parser": "7.18.0",
-        "eslint": "8.57.0",
+        "eslint": "9.7.0",
         "rimraf": "6.0.0",
         "typescript": "5.5.4"
     },
     "dependencies": {
+        "@eslint/compat": "^1.1.1",
         "discord.js": "^14.14.1",
         "jsonfile": "^6.1.0",
         "node-fetch": "^3.3.2",

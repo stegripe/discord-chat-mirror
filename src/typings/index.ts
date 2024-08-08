@@ -1,7 +1,7 @@
-import { APIEmbed, Snowflake } from "discord.js";
+/* eslint-disable typescript/naming-convention */
+import type { APIEmbed, Snowflake } from "discord.js";
 
-/* eslint-disable @typescript-eslint/naming-convention */
-export interface Channel {
+export type Channel = {
     id: Snowflake;
     type: number;
     guild_id?: Snowflake;
@@ -15,32 +15,32 @@ export interface Channel {
     parent_id?: Snowflake;
 }
 
-export interface Overwrite {
+export type Overwrite = {
     id: string;
     type: number;
     allow: string;
     deny: string;
 }
 
-export interface Things {
+export type Things = {
     avatarURL: string;
     content: any;
     embeds?: APIEmbed[];
     files?: any[];
-    url: any;
+    url: string;
     username: string;
 }
 
-export interface WebhookConfig {
+export type WebhookConfig = {
     things: Things;
 }
 
-export interface WebsocketTypes {
-    on: (event: string, cb: (data: any) => void) => void;
-    send: (data: any) => void;
+export type WebsocketTypes = {
+    on(event: string, cb: (data: any) => void): void;
+    send(data: any): void;
 }
 
-export interface DiscordWebhook {
+export type DiscordWebhook = {
     application_id: Snowflake | null;
     avatar: string | null;
     channel_id: Snowflake;
