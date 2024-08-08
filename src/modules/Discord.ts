@@ -116,31 +116,34 @@ export const listen = (): void => {
                     if (avatar?.startsWith("a_")) ext = "gif";
                     if (author.bot) ub = " [BOT]";
 
-                    const things: Things = {
-                        avatarURL: avatar
-                            ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.${ext}`
-                            : `https://cdn.discordapp.com/embed/avatars/${(BigInt(id) >> 22n) % 6n}.png`,
-                        content: content ? content : "** **\n",
-                        url: webhookUrl,
-                        username: `${username}${discriminator ?? ""}${ub}`
-                    };
+                    for (const webhookUrl of webhooksUrl) {
+                        const things: Things = {
+                            avatarURL: avatar
+                                ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.${ext}`
+                                : `https://cdn.discordapp.com/embed/avatars/${(BigInt(id) >> 22n) % 6n}.png`,
+                            content: content ? content : "** **\n",
+                            url: webhookUrl,
+                            username: `${username}${discriminator ?? ""}${enableBotIndicator ? ub : ""}`
+                        };
 
-                    if (embeds[0]) {
-                        things.embeds = embeds;
-                    } else if (sticker_items) {
-                        things.files = sticker_items.map(
-                            (a: RawStickerData) => `https://media.discordapp.net/stickers/${a.id}.webp`
-                        );
-                    } else if (attachments[0]) {
-                        const fileSizeInBytes = Math.max(...attachments.map((a: RawAttachmentData) => a.size));
-                        const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
-                        if (fileSizeInMegabytes < 8) {
-                            things.files = attachments.map((a: RawAttachmentData) => a.url);
-                        } else {
-                            things.content += attachments.map((a: RawAttachmentData) => a.url).join("\n");
+
+                        if (embeds[0]) {
+                            things.embeds = embeds;
+                        } else if (sticker_items) {
+                            things.files = sticker_items.map(
+                                (a: RawStickerData) => `https://media.discordapp.net/stickers/${a.id}.webp`
+                            );
+                        } else if (attachments[0]) {
+                            const fileSizeInBytes = Math.max(...attachments.map((a: RawAttachmentData) => a.size));
+                            const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+                            if (fileSizeInMegabytes < 8) {
+                                things.files = attachments.map((a: RawAttachmentData) => a.url);
+                            } else {
+                                things.content += attachments.map((a: RawAttachmentData) => a.url).join("\n");
+                            }
                         }
+                        executeWebhook(things);
                     }
-                    executeWebhook(things);
                 }
                 break;
             default:
