@@ -34,7 +34,7 @@
         "@types/ws": "^8.5.12",
         "@typescript-eslint/eslint-plugin": "8.0.1",
         "@typescript-eslint/parser": "8.0.1",
-        "eslint": "9.8.0",
+        "eslint": "9.9.0",
         "rimraf": "6.0.1",
         "typescript": "5.5.4"
     },
