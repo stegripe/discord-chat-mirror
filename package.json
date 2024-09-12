@@ -40,7 +40,7 @@
     },
     "dependencies": {
         "@eslint/compat": "^1.1.1",
-        "discord.js": "^14.16.1",
+        "discord.js": "^14.16.2",
         "jsonfile": "^6.1.0",
         "node-fetch": "^3.3.2",
         "ws": "^8.18.0"
