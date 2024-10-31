@@ -29,7 +29,7 @@
     "devDependencies": {
         "@stegripe/eslint-config": "1.0.1",
         "@types/jsonfile": "6.1.4",
-        "@types/node": "20.17.3",
+        "@types/node": "20.17.5",
         "@types/node-fetch": "2.6.11",
         "@types/ws": "^8.5.12",
         "@typescript-eslint/eslint-plugin": "8.12.2",
