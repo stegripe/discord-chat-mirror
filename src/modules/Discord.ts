@@ -151,11 +151,12 @@ export const listen = (): void => {
                             things.username = tes.name;
                         }
 
-                        if (embeds[0].author) {
+                         
+                        if (embeds.length > 0) {
                             things.embeds = embeds;
                         } else if (sticker_items) {
                             things.files = sticker_items.map((a: APIStickerItem) => `https://media.discordapp.net/stickers/${a.id}.webp`);
-                        } else if (attachments[0].id) {
+                        } else if (attachments.length > 0) {
                             const fileSizeInBytes = Math.max(...attachments.map((a: APIAttachment) => a.size));
                             const fileSizeInMegabytes = fileSizeInBytes / (1_024 * 1_024);
                             if (fileSizeInMegabytes < 8) {
