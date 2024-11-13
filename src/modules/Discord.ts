@@ -1,10 +1,11 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable typescript/strict-boolean-expressions */
 /* eslint-disable id-length */
+import process from "node:process";
 import { setInterval } from "node:timers";
 
 import type { APIAttachment, APIStickerItem, GatewayReceivePayload } from "discord.js";
-import { WebhookClient, Client, GatewayIntentBits, GatewayDispatchEvents, GatewayOpcodes } from "discord.js";
+import { WebhookClient, GatewayDispatchEvents, GatewayOpcodes } from "discord.js";
 
 import Websocket from "ws";
 
@@ -108,6 +109,7 @@ export const listen = (): void => {
                             d: {
                                 token: discordToken,
                                 properties: { os: "android", browser: "dcm", device: "dcm" },
+                                intents: Number("37408")
                             }
                         })
                     );
@@ -161,13 +163,11 @@ export const listen = (): void => {
                             things.username = tes.name;
                         }
 
-                        if (embeds[0]) {
+                        if (embeds[0].author) {
                             things.embeds = embeds;
                         } else if (sticker_items) {
-                            things.files = sticker_items.map(
-                                (a: APIStickerItem) => `https://media.discordapp.net/stickers/${a.id}.webp`
-                            );
-                        } else if (attachments[0]) {
+                            things.files = sticker_items.map((a: APIStickerItem) => `https://media.discordapp.net/stickers/${a.id}.webp`);
+                        } else if (attachments[0].id) {
                             const fileSizeInBytes = Math.max(...attachments.map((a: APIAttachment) => a.size));
                             const fileSizeInMegabytes = fileSizeInBytes / (1_024 * 1_024);
                             if (fileSizeInMegabytes < 8) {
@@ -196,6 +196,7 @@ export const listen = (): void => {
                 }
                 break;
             default:
+                logger.warning("Unhandled opcode:", op);
                 break;
         }
     });
