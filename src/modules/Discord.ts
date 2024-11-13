@@ -107,11 +107,7 @@ export const listen = (): void => {
                             op: 2,
                             d: {
                                 token: discordToken,
-                                properties: {
-                                    $os: "linux",
-                                    $browser: "test",
-                                    $device: "test"
-                                }
+                                properties: { os: "android", browser: "dcm", device: "dcm" },
                             }
                         })
                     );
