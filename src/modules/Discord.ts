@@ -17,6 +17,14 @@ export const executeWebhook = async (things: Things): Promise<void> => {
     await wsClient.send(things);
 };
 
+let ws: WebsocketTypes;
+let resumeData = {
+    sessionId: "",
+    resumeGatewayUrl: "",
+    seq: 0
+};
+let authenticated = false;
+
 export const listen = (): void => {
     new Client({
         intents: [
@@ -29,8 +37,27 @@ export const listen = (): void => {
         closeTimeout: 6_000
     });
 
-    const ws: WebsocketTypes = new Websocket("wss://gateway.discord.gg/?v=10&encoding=json");
-    let authenticated = false;
+    if (resumeData.sessionId && resumeData.resumeGatewayUrl) {
+        logger.info("Resuming session...");
+        logger.debug(`Session ID: ${resumeData.sessionId}`);
+        logger.debug(`Resume Gateway URL: ${resumeData.resumeGatewayUrl}`);
+        logger.debug(`Sequence: ${resumeData.seq}`);
+
+        ws = new Websocket(resumeData.resumeGatewayUrl);
+        ws.send(
+            JSON.stringify({
+                op: 6,
+                d: {
+                    token: discordToken,
+                    // eslint-disable-next-line typescript/naming-convention
+                    session_id: resumeData.sessionId,
+                    seq: resumeData.seq
+                }
+            })
+        );
+    } else {
+        ws = new Websocket("wss://gateway.discord.gg/?v=10&encoding=json");
+    }
 
     ws.on("open", () => {
         logger.info("Connected to the Discord WSS.");
@@ -38,12 +65,38 @@ export const listen = (): void => {
     ws.on("message", async (data: [any]) => {
         const payload: GatewayReceivePayload = JSON.parse(data.toString()) as GatewayReceivePayload;
         const { op, d, s, t } = payload;
+        resumeData.seq = s ?? resumeData.seq;
 
         switch (op) {
             case GatewayOpcodes.Hello:
                 logger.info("Hello event received. Starting heartbeat...");
+                ws.send(
+                    JSON.stringify({
+                        op: 1,
+                        d: s
+                    })
+                );
+                setInterval(() => {
+                    ws.send(
+                        JSON.stringify({
+                            op: 1,
+                            d: s
+                        })
+                    );
+
+                    logger.debug("Heartbeat sent.");
+                }, d.heartbeat_interval);
+
                 logger.info("Heartbeat started.");
+                break;
+            case GatewayOpcodes.Heartbeat:
                 logger.debug("Discord requested an immediate heartbeat.");
+                ws.send(
+                    JSON.stringify({
+                        op: 1,
+                        d: s
+                    })
+                );
                 logger.debug("Heartbeat sent.");
                 break;
             case GatewayOpcodes.HeartbeatAck:
@@ -66,7 +119,15 @@ export const listen = (): void => {
                 }
                 break;
             case GatewayOpcodes.Dispatch:
+                if (t === GatewayDispatchEvents.Ready) {
+                    resumeData = {
+                        sessionId: d.session_id,
+                        resumeGatewayUrl: `${d.resume_gateway_url}?v=10&encoding=json`,
+                        seq: s
+                    };
                     logger.info(`Logged in as ${d.user.username}${d.user.discriminator && d.user.discriminator !== "0" ? `#${d.user.discriminator}` : ""}`);
+                }
+
                 if (t === GatewayDispatchEvents.MessageCreate && channelsId.includes(d.channel_id)) {
                     let ext = "jpg";
                     let ub = " [USER]";
@@ -121,6 +182,21 @@ export const listen = (): void => {
                         }
                         await executeWebhook(things);
                     }
+                }
+                break;
+            case GatewayOpcodes.Reconnect: {
+                logger.info("Reconnecting...");
+                listen();
+                break;
+            }
+            case GatewayOpcodes.InvalidSession:
+                logger.warning("Invalid session.");
+                if (d) {
+                    logger.info("Can retry, reconnecting...");
+                    listen();
+                } else {
+                    logger.error("Cannot retry, exiting...");
+                    process.exit(1);
                 }
                 break;
             default:
