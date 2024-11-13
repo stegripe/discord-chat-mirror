@@ -10,6 +10,7 @@ import Websocket from "ws";
 
 import type { DiscordWebhook, Things, WebsocketTypes } from "../typings/index.js";
 import { channelsId, discordToken, webhooksUrl, enableBotIndicator, headers, useWebhookProfile } from "../utils/env.js";
+import logger from "../utils/logger.js";
 
 export const executeWebhook = async (things: Things): Promise<void> => {
     const wsClient = new WebhookClient({ url: things.url });
@@ -32,7 +33,7 @@ export const listen = (): void => {
     let authenticated = false;
 
     ws.on("open", () => {
-        console.log("Connected to the Discord API.");
+        logger.info("Connected to the Discord WSS.");
     });
     ws.on("message", async (data: [any]) => {
         const payload: GatewayReceivePayload = JSON.parse(data.toString()) as GatewayReceivePayload;
@@ -40,24 +41,10 @@ export const listen = (): void => {
 
         switch (op) {
             case GatewayOpcodes.Hello:
-                try {
-                    ws.send(
-                        JSON.stringify({
-                            op: 1,
-                            d: s
-                        })
-                    );
-                    setInterval(() => {
-                        ws.send(
-                            JSON.stringify({
-                                op: 1,
-                                d: s
-                            })
-                        );
-                    }, d.heartbeat_interval);
-                } catch (error) {
-                    console.log(error);
-                }
+                logger.info("Hello event received. Starting heartbeat...");
+                logger.info("Heartbeat started.");
+                logger.debug("Discord requested an immediate heartbeat.");
+                logger.debug("Heartbeat sent.");
                 break;
             case GatewayOpcodes.HeartbeatAck:
                 if (!authenticated) {
@@ -75,9 +62,11 @@ export const listen = (): void => {
                             }
                         })
                     );
+                    logger.info("Authenticating...");
                 }
                 break;
             case GatewayOpcodes.Dispatch:
+                    logger.info(`Logged in as ${d.user.username}${d.user.discriminator && d.user.discriminator !== "0" ? `#${d.user.discriminator}` : ""}`);
                 if (t === GatewayDispatchEvents.MessageCreate && channelsId.includes(d.channel_id)) {
                     let ext = "jpg";
                     let ub = " [USER]";

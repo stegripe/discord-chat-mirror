@@ -8,6 +8,7 @@ export const webhooksUrl: string[] = parseEnvValue(process.env.WEBHOOKS_URL ?? "
 
 export const enableBotIndicator: boolean = process.env.ENABLE_BOT_INDICATOR?.toLowerCase() === "yes";
 export const useWebhookProfile: boolean = process.env.USE_WEBHOOK_PROFILE?.toLowerCase() === "yes";
+export const debugMode: boolean = process.env.DEBUG_MODE?.toLowerCase() === "yes";
 
 export const headers = {
     "Content-Type": "application/json",

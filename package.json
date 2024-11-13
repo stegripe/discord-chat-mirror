@@ -10,7 +10,7 @@
         "lint": "eslint . --cache --cache-file .eslintcache",
         "lint:fix": "eslint . --cache --cache-file .eslintcache --fix",
         "start": "node --env-file .env --es-module-specifier-resolution=node .",
-        "start:dev": "rimraf ./dist && npm run compile && npm start"
+        "start:dev": "rimraf ./dist && tsc-watch --onSuccess \"node --env-file .env --es-module-specifier-resolution=node .\""
     },
     "repository": {
         "type": "git",
@@ -40,9 +40,11 @@
     },
     "dependencies": {
         "@eslint/compat": "^1.2.2",
+        "@ptkdev/logger": "^1.8.0",
         "discord.js": "^14.16.3",
         "jsonfile": "^6.1.0",
         "node-fetch": "^3.3.2",
+        "tsc-watch": "^6.2.0",
         "ws": "^8.18.0"
     }
 }
