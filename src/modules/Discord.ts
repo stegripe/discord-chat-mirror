@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-/* eslint-disable typescript/strict-boolean-expressions */
 /* eslint-disable id-length */
 import process from "node:process";
 import { setInterval } from "node:timers";
@@ -27,17 +26,6 @@ let resumeData = {
 let authenticated = false;
 
 export const listen = (): void => {
-    new Client({
-        intents: [
-            GatewayIntentBits.Guilds,
-            GatewayIntentBits.GuildMembers,
-            GatewayIntentBits.GuildMessages,
-            GatewayIntentBits.DirectMessages,
-            GatewayIntentBits.MessageContent
-        ],
-        closeTimeout: 6_000
-    });
-
     if (resumeData.sessionId && resumeData.resumeGatewayUrl) {
         logger.info("Resuming session...");
         logger.debug(`Session ID: ${resumeData.sessionId}`);
