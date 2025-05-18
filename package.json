@@ -44,7 +44,7 @@
         "discord.js": "^14.19.3",
         "jsonfile": "^6.1.0",
         "node-fetch": "^3.3.2",
-        "tsc-watch": "^6.2.1",
+        "tsc-watch": "^6.3.1",
         "ws": "^8.18.2"
     }
 }
