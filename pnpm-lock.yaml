@@ -24,8 +24,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       tsc-watch:
-        specifier: ^6.2.1
-        version: 6.2.1(typescript@5.6.3)
+        specifier: ^6.3.1
+        version: 6.3.1(typescript@5.6.3)
       ws:
         specifier: ^8.18.2
         version: 8.18.2
@@ -1593,8 +1593,8 @@ packages:
   ts-mixer@6.0.4:
     resolution: {integrity: sha512-ufKpbmrugz5Aou4wcr5Wc1UUFWOLhq+Fm6qa6P0w0K5Qw2yhaUoiWszhCVuNQyNwrlGiscHOmqYoAox1PtvgjA==}
 
-  tsc-watch@6.2.1:
-    resolution: {integrity: sha512-GLwdz5Dy9K3sVm3RzgkLcyDpl5cvU9HEcE1A3gf5rqEwlUe7gDLxNCgcuNEw3zoKOiegMo3LnbF1t6HLqxhrSA==}
+  tsc-watch@6.3.1:
+    resolution: {integrity: sha512-x1hNJ/m1Cln2OvNJJLPsnWI1pObm+Jq9jF6kyz0flEy/ym7Y9TvU9edg6lXLuGVkhDClwBWi8aWAFE0qgzEkzw==}
     engines: {node: '>=12.12.0'}
     hasBin: true
     peerDependencies:
@@ -3474,7 +3474,7 @@ snapshots:
 
   ts-mixer@6.0.4: {}
 
-  tsc-watch@6.2.1(typescript@5.6.3):
+  tsc-watch@6.3.1(typescript@5.6.3):
     dependencies:
       cross-spawn: 7.0.3
       node-cleanup: 2.1.2
