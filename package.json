@@ -32,14 +32,14 @@
         "@types/node": "22.15.29",
         "@types/node-fetch": "2.6.12",
         "@types/ws": "^8.18.1",
-        "@typescript-eslint/eslint-plugin": "8.14.0",
-        "@typescript-eslint/parser": "8.14.0",
-        "eslint": "9.14.0",
+        "@typescript-eslint/eslint-plugin": "8.33.0",
+        "@typescript-eslint/parser": "8.33.0",
+        "eslint": "9.28.0",
         "rimraf": "6.0.1",
-        "typescript": "5.6.3"
+        "typescript": "5.8.3"
     },
     "dependencies": {
-        "@eslint/compat": "^1.2.3",
+        "@eslint/compat": "^1.2.9",
         "@ptkdev/logger": "^1.8.0",
         "discord.js": "^14.19.3",
         "jsonfile": "^6.1.0",
