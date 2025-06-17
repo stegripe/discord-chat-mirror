@@ -24,8 +24,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       tsc-watch:
-        specifier: ^6.3.1
-        version: 6.3.1(typescript@5.6.3)
+        specifier: ^7.1.1
+        version: 7.1.1(typescript@5.6.3)
       ws:
         specifier: ^8.18.2
         version: 8.18.2
@@ -568,6 +568,10 @@ packages:
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+    engines: {node: '>= 8'}
+
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
   data-uri-to-buffer@4.0.1:
@@ -1593,8 +1597,8 @@ packages:
   ts-mixer@6.0.4:
     resolution: {integrity: sha512-ufKpbmrugz5Aou4wcr5Wc1UUFWOLhq+Fm6qa6P0w0K5Qw2yhaUoiWszhCVuNQyNwrlGiscHOmqYoAox1PtvgjA==}
 
-  tsc-watch@6.3.1:
-    resolution: {integrity: sha512-x1hNJ/m1Cln2OvNJJLPsnWI1pObm+Jq9jF6kyz0flEy/ym7Y9TvU9edg6lXLuGVkhDClwBWi8aWAFE0qgzEkzw==}
+  tsc-watch@7.1.1:
+    resolution: {integrity: sha512-r6t37Dkk4vK44HwxOe+OzjpE/gDamZAwqXhtcAJD/hPVblcjJK45NxbK0HcDASXG0U4pEnCh640JZbeDVSC6yA==}
     engines: {node: '>=12.12.0'}
     hasBin: true
     peerDependencies:
@@ -2323,6 +2327,12 @@ snapshots:
       browserslist: 4.23.3
 
   cross-spawn@7.0.3:
+    dependencies:
+      path-key: 3.1.1
+      shebang-command: 2.0.0
+      which: 2.0.2
+
+  cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
@@ -3474,9 +3484,9 @@ snapshots:
 
   ts-mixer@6.0.4: {}
 
-  tsc-watch@6.3.1(typescript@5.6.3):
+  tsc-watch@7.1.1(typescript@5.6.3):
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       node-cleanup: 2.1.2
       ps-tree: 1.2.0
       string-argv: 0.3.2
