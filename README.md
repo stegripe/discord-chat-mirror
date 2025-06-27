@@ -25,6 +25,8 @@ This project is an educational purpose only. I am not responsible for any misuse
 
 **Use at your own risk.**
 
+***Its not dead, I just dont have time to maintain it***
+
 ## About
 
 Discord Chat Mirror, as the name stated, this is a tool to mirror a discord chat on specific channel to another one you wish. It uses Discord WebSocket and Discord Webhook.
