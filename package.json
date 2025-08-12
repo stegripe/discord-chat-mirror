@@ -42,7 +42,7 @@
         "@eslint/compat": "^1.2.3",
         "@ptkdev/logger": "^1.8.0",
         "discord.js": "^14.21.0",
-        "jsonfile": "^6.1.0",
+        "jsonfile": "^6.2.0",
         "node-fetch": "^3.3.2",
         "tsc-watch": "^7.1.1",
         "ws": "^8.18.3"
