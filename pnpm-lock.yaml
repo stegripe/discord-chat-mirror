@@ -15,8 +15,8 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0
       discord.js:
-        specifier: ^14.22.0
-        version: 14.22.0
+        specifier: ^14.22.1
+        version: 14.22.1
       jsonfile:
         specifier: ^6.2.0
         version: 6.2.0
@@ -633,8 +633,8 @@ packages:
   discord-api-types@0.38.21:
     resolution: {integrity: sha512-E6KtXUNjZVIYP1GMjmeRdAC1xRql9xtSahRwJYpP74/hJ6Q2i2oTp6ZbFG/FUN0WqtdW2igHDsJyF2u9hV8pHQ==}
 
-  discord.js@14.22.0:
-    resolution: {integrity: sha512-IDSeDdWSEA4DoOyspekbetcFKkEonJO09cxR+kqQQlTWd5CTm/3Z48I4Te+EL8uxn52s718FZ0rI2dLxRkTpwg==}
+  discord.js@14.22.1:
+    resolution: {integrity: sha512-3k+Kisd/v570Jr68A1kNs7qVhNehDwDJAPe4DZ2Syt+/zobf9zEcuYFvsfIaAOgCa0BiHMfOOKQY4eYINl0z7w==}
     engines: {node: '>=18'}
 
   doctrine@2.1.0:
@@ -2414,7 +2414,7 @@ snapshots:
 
   discord-api-types@0.38.21: {}
 
-  discord.js@14.22.0:
+  discord.js@14.22.1:
     dependencies:
       '@discordjs/builders': 1.11.2
       '@discordjs/collection': 1.5.3
