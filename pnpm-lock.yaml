@@ -37,8 +37,8 @@ importers:
         specifier: 6.1.4
         version: 6.1.4
       '@types/node':
-        specifier: 22.18.0
-        version: 22.18.0
+        specifier: 22.18.6
+        version: 22.18.6
       '@types/node-fetch':
         specifier: 2.6.13
         version: 2.6.13
@@ -284,8 +284,8 @@ packages:
   '@types/node-fetch@2.6.13':
     resolution: {integrity: sha512-QGpRVpzSaUs30JBSGPjOg4Uveu384erbHBoT1zeONvyCfwQxIkUshLAOqN/k9EjGviPRmWTTe6aH2qySWKTVSw==}
 
-  '@types/node@22.18.0':
-    resolution: {integrity: sha512-m5ObIqwsUp6BZzyiy4RdZpzWGub9bqLJMvZDD0QMXhxjqMHMENlj+SqF5QxoUwaQNFe+8kz8XM8ZQhqkQPTgMQ==}
+  '@types/node@22.18.6':
+    resolution: {integrity: sha512-r8uszLPpeIWbNKtvWRt/DbVi5zbqZyj1PTmhRMqBMvDnaz1QpmSKujUtJLrqGZeoM8v72MfYggDceY4K1itzWQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1995,14 +1995,14 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 22.18.0
+      '@types/node': 22.18.6
 
   '@types/node-fetch@2.6.13':
     dependencies:
-      '@types/node': 22.18.0
+      '@types/node': 22.18.6
       form-data: 4.0.4
 
-  '@types/node@22.18.0':
+  '@types/node@22.18.6':
     dependencies:
       undici-types: 6.21.0
 
@@ -2010,7 +2010,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.18.0
+      '@types/node': 22.18.6
 
   '@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@9.14.0)(typescript@5.6.3))(eslint@9.14.0)(typescript@5.6.3)':
     dependencies:
