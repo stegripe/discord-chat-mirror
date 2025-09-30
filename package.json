@@ -29,7 +29,7 @@
     "devDependencies": {
         "@stegripe/eslint-config": "1.0.1",
         "@types/jsonfile": "6.1.4",
-        "@types/node": "22.18.6",
+        "@types/node": "22.18.7",
         "@types/node-fetch": "2.6.13",
         "@types/ws": "^8.18.1",
         "@typescript-eslint/eslint-plugin": "8.14.0",
@@ -44,7 +44,7 @@
         "discord.js": "^14.22.1",
         "jsonfile": "^6.2.0",
         "node-fetch": "^3.3.2",
-        "tsc-watch": "^7.1.1",
+        "tsc-watch": "^7.2.0",
         "ws": "^8.18.3"
     }
 }
