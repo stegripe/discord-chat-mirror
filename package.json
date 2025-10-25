@@ -41,7 +41,7 @@
     "dependencies": {
         "@eslint/compat": "^1.2.3",
         "@ptkdev/logger": "^1.8.0",
-        "discord.js": "^14.23.2",
+        "discord.js": "^14.24.0",
         "jsonfile": "^6.2.0",
         "node-fetch": "^3.3.2",
         "tsc-watch": "^7.2.0",
