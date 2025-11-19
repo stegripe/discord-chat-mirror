@@ -35,13 +35,13 @@
         "@typescript-eslint/eslint-plugin": "8.14.0",
         "@typescript-eslint/parser": "8.14.0",
         "eslint": "9.14.0",
-        "rimraf": "6.1.0",
+        "rimraf": "6.1.2",
         "typescript": "5.6.3"
     },
     "dependencies": {
         "@eslint/compat": "^1.2.3",
         "@ptkdev/logger": "^1.8.0",
-        "discord.js": "^14.24.2",
+        "discord.js": "^14.25.0",
         "jsonfile": "^6.2.0",
         "node-fetch": "^3.3.2",
         "tsc-watch": "^7.2.0",
