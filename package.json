@@ -27,7 +27,7 @@
         "pnpm": ">=8.0.0"
     },
     "devDependencies": {
-        "@stegripe/eslint-config": "1.0.1",
+        "@stegripe/eslint-config": "2.2.2",
         "@types/jsonfile": "6.1.4",
         "@types/node": "24.10.1",
         "@types/node-fetch": "2.6.13",
