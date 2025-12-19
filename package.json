@@ -27,16 +27,17 @@
         "pnpm": ">=8.0.0"
     },
     "devDependencies": {
-        "@stegripe/eslint-config": "1.0.1",
+        "@stegripe/eslint-config": "3.0.0",
         "@types/jsonfile": "6.1.4",
         "@types/node": "24.10.4",
         "@types/node-fetch": "2.6.13",
         "@types/ws": "^8.18.1",
-        "@typescript-eslint/eslint-plugin": "8.14.0",
-        "@typescript-eslint/parser": "8.14.0",
-        "eslint": "9.14.0",
+        "@typescript-eslint/eslint-plugin": "8.50.0",
+        "@typescript-eslint/parser": "8.50.0",
+        "eslint": "9.39.2",
+        "globals": "16.3.0",
         "rimraf": "6.1.2",
-        "typescript": "5.6.3"
+        "typescript": "5.9.3"
     },
     "dependencies": {
         "@eslint/compat": "^2.0.0",
