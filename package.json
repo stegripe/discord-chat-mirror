@@ -17,7 +17,7 @@
         "url": "git+https://github.com/Stegripe/discord-chat-mirror-ext.git"
     },
     "author": "Stegripe <support@stegripe.org>",
-    "license": "BSD-3-Clause",
+    "license": "AGPL-3.0",
     "bugs": {
         "url": "https://github.com/Stegripe/discord-chat-mirror-ext/issues"
     },
